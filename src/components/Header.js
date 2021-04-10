@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div className="topnav">
-      <a className="logo" href="/">Movie Maker</a>
+      <a className="logo" href="/">Movie Maker Tomcat</a>
       <div className="search-container">
         <form>
           <a href="/">Add Movies</a>
