@@ -4,6 +4,7 @@ const resolvers = {
   movies: () => {
     return Movie.find({});
   },
+
   movieByName: (args) => {
     return Movie.findOne({ name: args.name });
   },
