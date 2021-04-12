@@ -13,29 +13,22 @@ const allMovies = gql`
   }
 `;
 class Movies extends Component {
-  state = {
-    movies: [
-      { id: 1, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 2, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 3, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 4, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 5, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 6, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 7, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' },
-      { id: 8, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: 'https://rb.gy/kbnq4w' }
-    ]
-  };
-
   render() {
     console.log(this.props);
+    let data = this.props.data;
+    if (data.loading) {
+      return <h2 style={{ textAlign: 'center' }}>We are loading your movies...</h2>;
+    }
+    if (data.movies.length === 0) {
+      return <h2 style={{ textAlign: 'center' }}>Please add movies of your choice</h2>;
+    }
     return (
       <div className="movies">
-        {this.state.movies.map((movie) => {
-          return <Movie key={movie.id}
+        {data.movies.map((movie) => {
+          return <Movie key={movie.name}
             name={movie.name}
             genre={movie.genre}
             year={movie.year}
-            image={movie.image}
           />;
         })}
       </div>
