@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { graphqlHTTP } = require('express-graphql');
 const movieSchema = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:27017/movie_maker', {
   useNewUrlParser: true,
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/movie_maker', {
   .then(() => console.log('MongoBB Connected!'))
   .catch((err) => console.log('Error', err));
 
+app.use(cors());
 // Setting up GraphQL
 app.use('/graphql', graphqlHTTP({
   schema: movieSchema,
