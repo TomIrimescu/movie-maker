@@ -6,4 +6,4 @@ const movieSchema = new mongoose.Schema({
   year: String
 });
 
-modules.exports = new mongoose.model('Movie', movieSchema);
+module.exports = new mongoose.model('Movie', movieSchema);
