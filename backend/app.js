@@ -6,7 +6,10 @@ const movieSchema = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/movie_maker', {
+require('dotenv').config();
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -29,3 +32,5 @@ app.get('/', (req, res) => {
 app.listen(4000, () => {
   console.log('Server on port 4000');
 });
+
+module.exports = app;
